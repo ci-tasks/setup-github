@@ -24,7 +24,7 @@ async function execute(cmd: string): Promise<Result> {
 export async function setup({token}: Input): Promise<void> {
   await execute(`git config --global user.name GitHub Action`)
   await execute(
-    `git config --global user.email github-action@users.noreply.github.com`
+    `git config --global user.email github-actions@users.noreply.github.com`
   )
   await execute(
     `git config --global url."https://${token}:x-oauth-basic@github.com/".insteadOf "https://github.com/"`

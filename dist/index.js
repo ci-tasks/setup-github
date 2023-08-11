@@ -94,7 +94,7 @@ function execute(cmd) {
 function setup({ token }) {
     return __awaiter(this, void 0, void 0, function* () {
         yield execute(`git config --global user.name GitHub Action`);
-        yield execute(`git config --global user.email github-action@users.noreply.github.com`);
+        yield execute(`git config --global user.email github-actions@users.noreply.github.com`);
         yield execute(`git config --global url."https://${token}:x-oauth-basic@github.com/".insteadOf "https://github.com/"`);
     });
 }
