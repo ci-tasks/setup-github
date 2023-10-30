@@ -1,4 +1,5 @@
 import {exec} from 'child_process'
+import core from '@actions/core'
 
 type Input = {
   token: string
@@ -21,12 +22,25 @@ async function execute(cmd: string): Promise<Result> {
   })
 }
 
-export async function setup({token}: Input): Promise<void> {
-  await execute(`git config --global user.name GitHub Action`)
-  await execute(
-    `git config --global user.email github-actions@users.noreply.github.com`
-  )
-  await execute(
-    `git config --global url."https://${token}:x-oauth-basic@github.com/".insteadOf "https://github.com/"`
+export async function setup(input: Input): Promise<void> {
+  core.info(`Setup a GitHub environment...`)
+
+  // declare the commands
+  const commands = [
+    `git config --global user.name GitHub Action`,
+    `git config --global user.email github-actions@users.noreply.github.com`,
+    `git config --global url."https://${input.token}:x-oauth-basic@github.com/".insteadOf "https://github.com/"`
+  ]
+
+  // execute ths commands
+  for (const cmd of commands) {
+    await execute(cmd)
+  }
+
+  core.info(`Export a Golang environment...`)
+  // export the golang environment
+  core.exportVariable(
+    'GOPRIVATE',
+    `github.com/${process.env.GITHUB_REPOSITORY_OWNER}/*`
   )
 }
