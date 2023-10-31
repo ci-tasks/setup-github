@@ -1,4 +1,4 @@
-name: 'Setup Git environment'
+name: 'Setup GitHub environment'
 description: 'Configure a git client for use with GitHub'
 author: 'Svetlin Ralchev'
 inputs:
