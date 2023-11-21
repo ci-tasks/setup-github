@@ -29919,7 +29919,7 @@ function run() {
             core.info(`Export a GitHub environment...`);
             // export the environment variables
             core.exportVariable('GH_REPOSITORY_NAME', directory.repo);
-            core.exportVariable('GH_DOCKER_REGISTRY_URL', `ghcr.io/${directory.owner}`);
+            core.exportVariable('GH_DOCKER_REGISTRY', `ghcr.io/${directory.owner}`);
             // done!
         }
         catch (error) {
