@@ -21,5 +21,5 @@ Configure a git client for use with GitHub
 <!-- action-docs-runs -->
 ## Runs
 
-This action is a `node16` action.
+This action is a `node20` action.
 <!-- action-docs-runs -->
